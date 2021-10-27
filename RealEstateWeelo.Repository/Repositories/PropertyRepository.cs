@@ -13,26 +13,30 @@ namespace RealEstateWeelo.Repository.Repositories
         public PropertyRepository(RealEstateWeeloContext context)=>
             _context = context;
         
-        public void CreateProperty(Property property)
+        public async Task CreatePropertyAsync(Property property)
         {
-            _context.Add(property);
+            await _context.AddAsync(property);
         }
 
-        public async Task<IEnumerable<Property>> GetProperties()
+        public async Task<IEnumerable<Property>> GetPropertiesAsync()
         {
             return await _context.Property.ToListAsync();
         }
 
-        public async Task<Property> GetProperty(int id)
+        public async Task<Property> GetPropertyAsync(int id)
         {
             return await _context.Property.FindAsync(id);
         }
 
-        public void UpdateProperty(int id, Property property)
+        public async Task UpdatePropertyAsync(Property property)
         {
-            var dbProperty = _context.Property.Find(id);
-            dbProperty.OwnerId = property.OwnerId;
+            var dbProperty = await _context.Property.FindAsync(property.Id);
+            if(property.OwnerId.HasValue)
+                dbProperty.OwnerId = property.OwnerId;
             dbProperty.Price = property.Price;
+            dbProperty.CodeInternal = property.CodeInternal;
+            dbProperty.Address = property.Address;
+            dbProperty.Year = property.Year;
             dbProperty.Name = property.Name;
         }
     }

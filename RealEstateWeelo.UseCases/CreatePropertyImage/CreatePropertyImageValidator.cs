@@ -15,7 +15,7 @@ namespace RealEstateWeelo.UseCases
         }
         private bool IsPropertyExist(int PropertyId)
         {
-            var property = _repository.GetProperty(PropertyId).GetAwaiter().GetResult();
+            var property = _repository.GetPropertyAsync(PropertyId).GetAwaiter().GetResult();
             if (property == null) return false;
             return true;
         }

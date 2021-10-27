@@ -10,7 +10,9 @@ namespace RealEstateWeelo.UseCases.Mappings
         {
             CreateMap<CreatePropertyDTO, Property>().ReverseMap();
             CreateMap<Property, PropertyDTO>().ReverseMap();
-
+            CreateMap<UpdatePropertyDTO, Property>().ReverseMap();
+            CreateMap<CreateOwnerDTO, Owner>().ReverseMap();
+            CreateMap<Owner, OwnerDTO>().ReverseMap();
             CreateMap<CreatePropertyImageDTO, PropertyImage>().ReverseMap();
             CreateMap<PropertyImage, PropertyImageDTO>().ReverseMap();
         }

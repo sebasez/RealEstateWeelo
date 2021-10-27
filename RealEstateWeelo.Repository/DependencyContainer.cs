@@ -15,6 +15,7 @@ namespace RealEstateWeelo.Repository
                  options.UseSqlServer(configuration.GetConnectionString("RealEstateWeelo")) 
             );
             services.AddScoped<IPropertyRepository, PropertyRepository>();
+            services.AddScoped<IOwnerRepository, OwnerRepository>();
             services.AddScoped<IPropertyImageRepository, PropertyImageRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             return services;

@@ -24,9 +24,12 @@ namespace RealEstateWeelo.UseCases
             IMapper mapper = mapperConfig.CreateMapper();
             services.AddSingleton(mapper);
             services.AddTransient<ICreatePropertyInputPort, CreatePropertyInteractor>();
+            services.AddTransient<IUpdatePropertyInputPort, UpdatePropertyInteractor>();
             services.AddTransient<IGetPropertiesInputPort, GetPropertiesInteractor>();
+            services.AddTransient<IGetPropertyInputPort, GetPropertyInteractor>();
             services.AddTransient<ICreatePropertyImageInputPort, CreatePropertyImageInteractor>();
             services.AddTransient<IGetPropertyImagesInputPort, GetPropertyImagesInteractor>();
+            services.AddTransient<ICreateOwnerInputPort, CreateOwnerInteractor>();
             return services;
         }
     }

@@ -9,8 +9,11 @@ namespace RealEstateWeelo.Presenters
         {
             services.AddScoped<ICreatePropertyImageOutputPort, CreatePropertyImagePresenter>();
             services.AddScoped<ICreatePropertyOutputPort, CreatePropertyPresenter>();
+            services.AddScoped<ICreateOwnerOutputPort, CreateOwnerPresenter>();
             services.AddScoped<IGetPropertiesOutputPort, GetPropertiesPresenter>();
             services.AddScoped<IGetPropertyImagesOutputPort, GetPropertyImagesPresenter>();
+            services.AddScoped<IUpdatePropertyOutputPort, UpdatePropertyPresenter>();
+            services.AddScoped<IGetPropertyOutputPort, GetPropertyPresenter>();
             return services;
         }
     }

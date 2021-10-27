@@ -3,11 +3,6 @@ using Microsoft.Extensions.DependencyInjection;
 using RealEstateWeelo.Presenters;
 using RealEstateWeelo.Repository;
 using RealEstateWeelo.UseCases;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RealEstateWeelo.IoC
 {

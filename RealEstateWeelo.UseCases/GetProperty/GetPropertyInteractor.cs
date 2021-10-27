@@ -2,21 +2,20 @@
 using RealEstateWeelo.DTOs;
 using RealEstateWeelo.Entities.Interfaces;
 using RealEstateWeelo.UseCasesPorts;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace RealEstateWeelo.UseCases
 {
-    public class GetPropertiesInteractor : IGetPropertiesInputPort
+    public class GetPropertyInteractor : IGetPropertyInputPort
     {
         private readonly IPropertyRepository _repository;
-        private readonly IGetPropertiesOutputPort _outputPort;
+        private readonly IGetPropertyOutputPort _outputPort;
         private readonly IMapper _imapper;
-        public GetPropertiesInteractor(IPropertyRepository repository, IGetPropertiesOutputPort outputPort, IMapper imapper) =>
+        public GetPropertyInteractor(IPropertyRepository repository, IGetPropertyOutputPort outputPort, IMapper imapper) =>
             (_repository, _outputPort, _imapper) = (repository, outputPort, imapper);
-        public async Task<Task> Handle()
+        public async Task<Task> Handle(int id)
         {
-            var propertiesDto = _imapper.Map<IEnumerable<PropertyDTO>>(await _repository.GetPropertiesAsync());
+            var propertiesDto = _imapper.Map<PropertyDTO>(await _repository.GetPropertyAsync(id));
             await _outputPort.Handle(propertiesDto);
             return Task.CompletedTask;
         }
